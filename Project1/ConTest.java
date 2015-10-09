@@ -3,7 +3,7 @@
  * @author geoffwacker, kevinliu
  * 10.04.15
  */
-
+package com.company;
 import java.util.*;
 
 public class ConTest 
@@ -35,18 +35,27 @@ public class ConTest
 				//Infix to postfix.
 				case 'i':
 				{
+					System.out.println("Please enter the infix expression:");
+					String exp = in.nextLine();
+					System.out.println(exp);
+					String answer = Converter.infixToPostfix(exp);
+					System.out.println("The postfix expression is " + answer);
 					break;
 				}
 				
 				//Postfix expression evaluation.
 				case 'p':
 				{
+					System.out.println("Please enter the postfix expression:");
+					System.out.println("The value of the postfix expression is "+ Converter.postfixValue(in.nextLine()));
 					break;
 				}
 				
 				//Arithmetic expression evaluation.
 				case 'a':
 				{
+					System.out.println("Please enter the infix expression:");
+					System.out.println("The value of the arithmetic expression is " + Converter.postfixValue(Converter.infixToPostfix(in.nextLine())));
 					break;
 				}
 				
@@ -59,6 +68,7 @@ public class ConTest
 				//Invalid input.
 				default:
 				{
+					System.out.println("Invalid choice");
 					break;
 				}
 			}

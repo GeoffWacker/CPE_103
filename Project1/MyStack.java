@@ -4,7 +4,7 @@
  * @id gwacker, 
  * 10.04.15
  */
-
+package com.company;
 import java.util.*;
 
 public class MyStack<T> 
@@ -24,27 +24,67 @@ public class MyStack<T>
 	{
 		first = null;
 	}
-	//Parameter object is added to the top of the stack.
-	public void push(T element)
+	//
+
+	/**
+	 * Insert a new item at the top of the stack.
+	 * @param item the item to insert.
+	 */
+	public void push(T item)
 	{
-		
+		Node input = new Node();
+		input.item = item;
+		input.next = first;
+		first = input;
 	}
-	
-	//Removes and returns the element at the top of the stack.
+
+	/**
+	 * Remove the top item from the stack and return it.
+	 * @return the item that was on top of the stack.
+	 */
 	public T pop()
 	{
-		//If stack is empty, throw EmptyStackException.
-		
-		//Placeholder code.
-		return null;
+		//Check if the stack is empty.
+		if (isEmpty())
+		{
+			throw new EmptyStackException();
+		}
+
+		//It's not empty, so continue.
+		else
+		{
+			T popReturn = first.item;
+			first = first.next;
+			return popReturn;
+		}
 	}
-	
-	//Return the top value of the stack without removing it.
+
+	/**
+	 * Return the top element without removing it.
+	 * @return the item that is currently on top of the stack.
+	 */
 	public T peek()
 	{
-		//If stack is empty, throw EmptyStackException.	
-		
-		//Placeholder code.
-		return null;
+		//Check if the stack is empty.
+		if (isEmpty())
+		{
+			throw new EmptyStackException();
+		}
+
+		//It's not empty, so continue.
+		else{
+			T peekReturn = first.item;
+			return peekReturn;
+		}
+	}
+
+	/**
+	 * Determine if the stack is empty or not.
+	 * @return True or false if the stack is empty.
+	 */
+	public boolean isEmpty()
+	{
+		//If first is null, we know it's empty.
+		return first == null;
 	}
 }
