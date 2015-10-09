@@ -45,19 +45,19 @@ public class Converter {
             converter.push("*");
          }
          else if (token.equals("/")) {
-            while (!converter.isEmpty() && !converter.peek().equals("(") &&  !converter.peek().equals("+") && !converter.peek().equals("-") ){
+            while (!converter.isEmpty() && !converter.peek().equals("(")&& !converter.peek().equals("+") && !converter.peek().equals("-") ){
                postfix += converter.pop() + " ";
             }
             converter.push("/");
          }
          else if (token.equals("+")) {
-            while (!converter.isEmpty() && !converter.peek().equals("(")&& !converter.peek().equals("-")) {
+            while (!converter.isEmpty() && !converter.peek().equals("(")){
                postfix += converter.pop() + " ";
             }
             converter.push("+");
          }
          else if (token.equals("-")) {
-            while (!converter.isEmpty() && !converter.peek().equals("(")&& !converter.peek().equals("+")) {
+            while (!converter.isEmpty() && !converter.peek().equals("(") ) {
                postfix += converter.pop() + " ";
             }
             converter.push("-");
