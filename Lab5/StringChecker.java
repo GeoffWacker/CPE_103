@@ -74,8 +74,7 @@ public class StringChecker
 						else
 						{
 							return false;
-						}
-						
+						}		
 					}
 				}
 				
@@ -103,7 +102,6 @@ public class StringChecker
 							return false;
 						}
 					}
-					
 				}
 				
 				//Closing parentheses.
