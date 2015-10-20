@@ -1,0 +1,29 @@
+//pass
+10234 Smith
+
+//pass 
+20011 Burns
+
+//fail
+3.14 Rogers
+
+//pass
+11103 Peterson
+
+//fail
+0 Anderson
+
+//fail
+-500 Johnson
+
+//fail
+10234
+
+//fail
+10235 Taylor Wilson
+
+//pass 
+10000 Wacker
+
+
+

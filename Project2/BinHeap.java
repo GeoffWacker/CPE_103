@@ -4,8 +4,6 @@
  * 10.19.15
  */
 
-import java.util.*;
-
 public class BinHeap <T extends Comparable <? super T>> 
 {
 	//Public static nested MyException with two constructors.
@@ -45,7 +43,7 @@ public class BinHeap <T extends Comparable <? super T>>
     }
     
     /**
-     * 	Add an item to the heap, and increment the size.
+     * Add an item to the heap, and increment the size.
      * @param element the item we want to add to the heap.
      */
     public void insert(T element)
@@ -76,8 +74,6 @@ public class BinHeap <T extends Comparable <? super T>>
     		}
     		
     		//Finally add the element at the right hole.
-    		
-    		System.out.println("got to insert!");
     		arr[hole]= element;
     		
     		//Increment size.
@@ -86,8 +82,8 @@ public class BinHeap <T extends Comparable <? super T>>
     }
     
     /**
-     * 
-     * @return
+     * Remove and return the minimum value of the heap.
+     * @return the minimum value of the heap.
      */
     public T deleteMin()
     {
@@ -141,6 +137,10 @@ public class BinHeap <T extends Comparable <? super T>>
  	   return n;
  	}
     
+    /**
+     * Convert the heap to a string.
+     * @return the string representation of the heap.
+     */
     public String toString()
     {
     	//Define an empty string to work with.
@@ -158,12 +158,13 @@ public class BinHeap <T extends Comparable <? super T>>
     
     /**
      * Helper method for deleteMin.
-     * @param hole
-     * @param element
-     * @return
+     * @param hole the hole we're currently in.
+     * @param element The element we're looking at.
+     * @return newHole, the hole to traverse to next.
      */
     private int holeTraverse(int hole, T element)
     {
+    	//Initialize newHole.
     	int newHole = -1;
     	
         if((hole*2 + 1) < n) 
