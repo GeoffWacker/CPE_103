@@ -62,7 +62,7 @@ public class ListPrinter
 		//Close the scanners since we don't need them anymore.
 		in.close();
 		fileScan.close();
-		
+
 		//Print out the all the valid student records in sequential order.
 		System.out.println("Student List:");
 		

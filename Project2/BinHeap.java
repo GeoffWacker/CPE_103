@@ -167,35 +167,44 @@ public class BinHeap <T extends Comparable <? super T>>
     	//Initialize newHole.
     	int newHole = -1;
     	
+    	//See if hole has any children.
         if((hole*2 + 1) < n) 
         {
-           if( (hole*2 + 2) >= n) 
-           {
-              if( arr[hole*2+1].compareTo(element) < 0) 
-              {
-                 newHole = hole*2+1;
-              }
-           }
-           
-           else 
-           {
-              if (arr[hole*2+1].compareTo(arr[hole*2+2]) < 0) 
-              {
-                 if (arr[hole*2+1].compareTo(element) < 0)
-                 {
-                    newHole = hole*2+1;
-                 }
-              }
+        	//if it has a validright child.
+        	if( (hole*2 + 2) >= n) 
+        	{
+        		//if left child is less than our element.
+        		if( arr[hole*2+1].compareTo(element) < 0) 
+        		{
+        			//Left child becomes the hole.
+        			newHole = hole*2+1;
+        		}
+        	}
+        	
+        	else 
+        	{
+        		//If left child is less than the right child.
+        		if (arr[hole*2+1].compareTo(arr[hole*2+2]) < 0) 
+        		{
+        			//If left child is less than our element.
+        			if (arr[hole*2+1].compareTo(element) < 0)
+        			{
+        				//Left child becomes the hole.
+        				newHole = hole*2+1;
+        			}
+        		}
               
-              else 
-              {
-                 if (arr[hole*2+2].compareTo(element) < 0)
-                 {
-                	 newHole = hole*2+2;
-                 }
-              }
-           }
+        		else 
+        		{
+        			//If right child is less than our element.
+        			if (arr[hole*2+2].compareTo(element) < 0)
+        			{
+        				//Right child becomes the hole.
+        				newHole = hole*2+2;
+        			}
+        		}
+        	}
         }
-        return newHole;
+    	return newHole;
     }
 }

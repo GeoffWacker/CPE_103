@@ -22,6 +22,7 @@ public class HeapTest
 		//Create a string binHeap of the requested size.
 		BinHeap<String> stringHeap = new BinHeap<String>(in.nextInt()); 
 		in.nextLine();
+		
 		//Loop to ask for input.
 		while (input != 'q')
 		{
@@ -54,7 +55,6 @@ public class HeapTest
 						System.out.println("Please enter a valid input: ");
 						in.nextLine();
 					}
-					
 					break;
 				}
 				
@@ -70,7 +70,6 @@ public class HeapTest
 					{
 						System.out.println("Invalid operation on an empty heap");
 					}
-					
 					break;
 				}
 				
@@ -86,7 +85,6 @@ public class HeapTest
 					{
 						System.out.println("heap is not empty");
 					}
-	               
 					break;
 				}
 				
