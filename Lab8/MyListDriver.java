@@ -24,7 +24,7 @@ public class MyListDriver
 			System.out.println("Choose one of the following operations: ");
 			System.out.println("- add (enter the letter a) ");
 			System.out.println("- find (Enter the letter f) ");
-			System.out.println("- print(enter the letter p) ");
+			System.out.println("- print (enter the letter p) ");
 			System.out.println("- sum (Enter the letter s) ");
 			System.out.println("- quit (enter the letter q) ");
 			input = in.nextLine().charAt(0);
