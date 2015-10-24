@@ -16,6 +16,7 @@ public class MySortedList
 		public int element;
 		public Node next;
 		
+		//Construct a node with the specified element.
 		public Node(int element)
 		{
 			this.element = element;
@@ -35,16 +36,91 @@ public class MySortedList
 	 */
 	public void add(int item)
 	{
+		//Create a temporary node to work with.
+		Node tempNode = new Node(item);
 		
+		//List is empty, so head needs to be changed.
+		if (isEmpty())
+		{
+			head = tempNode;
+		}
+		
+		//If item is less than or equal to the first item, head should be updated to this item.
+		else if (item <= head.element)
+		{
+			tempNode.next = head;
+            head = tempNode;
+		}
+		
+		else
+		{
+			//Create a node pointer to work with.
+			Node current = head;
+			
+			//Advance the pointer until we hit the node containing the last value smaller than item.
+            while(current.next != null)
+            {
+            	if (current.next.element < item)
+                {
+            			current = current.next;
+                }
+        	
+            	/**MIGHT BE REDUNDANT CODE
+                else
+                {
+                	break;
+                }**/
+            }
+
+            //If we're at the end, insert the item at the end.
+            if (current.next == null)
+            {
+                current.next = tempNode;
+            }
+            
+            //We're not at the end, so insert it after the smaller value.
+            else
+            {
+                tempNode.next = current.next;
+                current.next = tempNode;   
+            }
+		}	
 	}
 	
 	/**
-	 * Delete the first occurence of the given item.
+	 * Delete the first occurrence of the given item.
 	 * @param item the item to delete.
 	 */
 	public void delete(int item)
 	{
-		
+		//If the list is empty, there is nothing to do.
+		if (!isEmpty())
+		{
+			//If item is at the front of the list(single element), advance the current head.
+			if (item == head.element)
+			{
+				head = head.next;
+			}
+			
+			//It's not the only element, so proceed like normal.
+			else
+			{
+				//Create a node pointer to work with.
+				Node current = head;
+			
+				//Advance our pointer until we get to last value smaller than item.
+				while (current.next != null && current.next.element < item) 
+				{
+					current = current.next;
+				}
+	        
+				//At this point, the next value is what we want to delete.
+				if (current.next!= null && current.next.element == item) 
+				{
+					current.next = current.next.next;
+				}
+			}
+		}
 	}
 
 	/**
@@ -54,8 +130,18 @@ public class MySortedList
 	 */
 	public int max()
 	{
-		//Placeholder code.
-		return 0;
+		//Create a node pointer to work with.
+		Node current = head;
+		
+		//Loop until we get to the last and largest element (because next will be null)
+		while (current.next != null)
+        {
+			current = current.next;
+        }
+		
+		//Return the largest element.
+        return current.element;
+
 	}
 	
 	/**
@@ -65,8 +151,8 @@ public class MySortedList
 	 */
 	public int min()
 	{
-		//Placeholder code.
-		return 0;
+		//Return the minimum value.
+		return head.element;
 	}
 	
 	/**
@@ -74,7 +160,19 @@ public class MySortedList
 	 */
 	public void print()
 	{
+		//Create a node pointer to work with.
+		Node current = head;
+        
+		//Loop until we reach the end of the list.
+		while (current.next != null)
+        {
+            System.out.print(current.element + " ");
+            current = current.next;
+        }
 		
+		//Print out the last element with a blank line after.
+        System.out.print(current.element);
+        System.out.println();
 	}
 	
 	/**
@@ -83,7 +181,6 @@ public class MySortedList
 	 */
 	public boolean isEmpty()
 	{
-		//Placeholder code.
-		return true;
+		return head == null;
 	}
 }
