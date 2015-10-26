@@ -64,12 +64,12 @@ public class MySortedList
                 {
             			current = current.next;
                 }
-        	
-            	/**MIGHT BE REDUNDANT CODE
-                else
+            	
+            	//We're where we want to be, so get out of the while loop.
+            	else
                 {
                 	break;
-                }**/
+                }
             }
 
             //If we're at the end, insert the item at the end.
@@ -151,7 +151,7 @@ public class MySortedList
 	 */
 	public int min()
 	{
-		//Return the minimum value.
+		//Return the minimum value which is found in the first node.
 		return head.element;
 	}
 	

@@ -3,6 +3,7 @@
  * @author geoffwacker, kevinliu
  * 10.21.15
  */
+
 import java.util.*;
 
 public class MyListDriver 
@@ -146,11 +147,12 @@ public class MyListDriver
 				//User wants to quit.
 				case 'q':
 				{
-					//Close the scanner since we don't need it anymore.
-					in.close();
 					break;
 				}
 			}
 		}
+		
+		//Close the scanner since we don't need it anymore.
+		in.close();
 	}
 }
