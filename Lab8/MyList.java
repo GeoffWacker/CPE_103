@@ -16,6 +16,7 @@ public class MyList
 		public int element;
 		public Node next;
 		
+		//Construct a node with the specified element.
 		public Node(int element)
 		{
 			this.element = element;
@@ -35,14 +36,16 @@ public class MyList
 	 */
 	public void add(int item)
 	{
+		//Create a temporary node to work with.
 		Node tempNode = new Node(item);
 	      
-		//
+		//If the list isn't empty, make head be after our new node.
 		if (head != null)
 		{
 			tempNode.next = head;
 		}
 	      
+		//Insert at the front.
 		head = tempNode;
 	}
 	
@@ -68,6 +71,8 @@ public class MyList
 		//firstNode is null, so our item must not be in the list.
 		if (firstNode == null)
 		{
+			System.out.println("" + item + " was not found");
+			System.out.println();
 			return false;
 		}
 		

@@ -38,7 +38,7 @@ public class MyListDriver
 					//Ask for an integer to add to the list.
 					System.out.println("Please enter an integer to add: ");
 				
-					//Remove addInt once testing is done.
+					//Get the integer that we want to add.
 					int addInt = in.nextInt();
 				
 					//Add the integer to the list.
@@ -47,8 +47,6 @@ public class MyListDriver
 					//Print out verification that we added.
 					System.out.println(addInt + " was added");
 					System.out.println();
-				
-					
 					
 					//Advance the scanner.
 					in.nextLine();
@@ -61,7 +59,7 @@ public class MyListDriver
 					//Ask for an integer to find in the list.
 					System.out.println("Enter an integer to find: ");
 				
-					//Remove findInt once testing is done.
+					//Get the integer that we want to find.
 					int findInt = in.nextInt();
 				
 					//If the element is in the list, tell the user we've found it.
@@ -71,15 +69,12 @@ public class MyListDriver
 						System.out.println();
 						in.nextLine();
 					} 
-				
-					//The element is not in the list, so tell the user we didn't find it.
+               
+					//Advance the scanner when we don't find the integer.
 					else
 					{
-						System.out.println("" + findInt + " was not found");
-						System.out.println();
 						in.nextLine();
 					}
-               
 					break;
 				}
 			
@@ -87,6 +82,7 @@ public class MyListDriver
 				case 'p':
 				{
 					list.print();
+					System.out.println();
 					break;
 				}
 			
@@ -101,10 +97,12 @@ public class MyListDriver
 				//User wants to quit.
 				case 'q':
 				{
-					in.close();
 					break;
 				}
 			}
 		}
+		
+		//Close the scanner since we don't need it anymore.
+		in.close();
 	}
 }
