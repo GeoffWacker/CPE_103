@@ -60,25 +60,27 @@ public class BST<T extends Comparable<? super T>>
 		{
 			//If we don't have another value, throw a NoSuchElementException.
 			if(!hasNext())
-	         {
-	            throw new NoSuchElementException();
-	         }
-
-			//
-			BSTNode node = stack.pop();
-
-			//
-			if(node.right != null)
 			{
-				stack.push(node.right);
+				throw new NoSuchElementException();
 			}
 
-			if(node.left != null)
+			//Grab the last element that was added to the stack.
+			BSTNode y = stack.pop();
+
+			//If we have a right child, push it to the stack.
+			if(y.right != null)
 			{
-				stack.push(node.left);
+				stack.push(y.right);
 			}
 
-			return node.element;
+			//If we have a right child, push it to the stack.
+			if(y.left != null)
+			{
+				stack.push(y.left);
+			}
+
+			//Return the element stored in y.
+			return y.element;
 		}
 		
 		//Remove is not supported, so throw an UnsupportedOperationException.
@@ -92,13 +94,37 @@ public class BST<T extends Comparable<? super T>>
 	//Nested in-order iterator class.
 	private class InIter implements Iterator<T>
 	{
-		//Create a ? for storing nodes.
+		//Push all left descendants of x to the stack.
+        private void stackUpLefts(BSTNode x)
+        {
+        	//While we have a left child.
+            while (x.left != null) 
+            {
+            	//Push the child to the stack.
+                stack.push(x.left);
+                
+                //Move x pointer to left child.
+                x = x.left;
+            }
+        }
+		//Create a stack for storing nodes.
 		private MyStack<BSTNode> stack;
 		
 		//Constructor.
         public InIter()
         {
-        	//Insert code here.
+        	//Initialize the stack.
+            stack = new MyStack<BSTNode>();
+            
+            //If the stack isn't empty, push the root to the stack.
+            if(root != null)
+            {
+            	//Push root to stack.
+            	stack.push(root);
+            	
+            	//Fill stack with root's left descendants.
+            	stackUpLefts(root);
+            }
         }
         
 		//Check if we have another value.
@@ -110,7 +136,26 @@ public class BST<T extends Comparable<? super T>>
 		//Return the next value.
 		public T next() 
 		{
-			return null;
+			//If we don't have another value, throw a NoSuchElementException.
+			if(!hasNext())
+	         {
+	            throw new NoSuchElementException();
+	         }
+			
+			//Grab the last element that was added to the stack.
+            BSTNode y = stack.pop();
+            
+            if (y.right != null) 
+            {
+            	//Push right child to stack.
+                stack.push(y.right);
+                
+                //Stack up lefts of y's right child.
+                stackUpLefts(y.right);
+            }
+            
+            //Return the element stored in y.
+            return y.element;
 		}
 		
 		//Remove is not supported, so throw an UnsupportedOperationException.
@@ -148,28 +193,29 @@ public class BST<T extends Comparable<? super T>>
         //Return the next value.
         public T next()
         {
-        	//
+        	//If we don't have another value, throw a NoSuchElementException.
         	if(!hasNext())
             {
             	throw new NoSuchElementException();
             }
             
-        	//
-            BSTNode node = queue.dequeue();
+        	//Grab the node at the front of the queue.
+            BSTNode y = queue.dequeue();
             
-            //
-            if(node.left != null)
+            //If we have a left child, enqueue it.
+            if(y.left != null)
             {
-            	queue.enqueue(node.left);
+            	queue.enqueue(y.left);
             }
             
-            //
-            if(node.right != null)
+            //If we have a right child, enqueue it.
+            if(y.right != null)
             {
-            	queue.enqueue(node.right);
+            	queue.enqueue(y.right);
             }
             
-            return node.element;
+            //Return the element stored in y.
+            return y.element;
         }
 		
         //Remove is not supported, so throw an UnsupportedOperationException.
