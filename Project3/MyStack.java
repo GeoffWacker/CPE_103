@@ -35,10 +35,13 @@ public class MyStack<T>
 		Node pushNode = new Node();
 		pushNode.item = item;
 		
+		//If the first is null, make our item the first node.
 		if (first == null)
 		{
 			first = pushNode;
 		}
+		
+		//The stack isn't empty, so insert.
 		else
 		{
 			pushNode.next = first;
