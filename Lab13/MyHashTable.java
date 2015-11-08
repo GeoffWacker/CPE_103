@@ -157,7 +157,6 @@ public class MyHashTable<T>
         	{
         		i++;
         	}
-  
 		}
 		
 		/**
@@ -210,7 +209,6 @@ public class MyHashTable<T>
 		{
 			throw new UnsupportedOperationException();
 		}
-		
 	}
 	
 	/**
