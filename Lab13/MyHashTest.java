@@ -1,9 +1,9 @@
 /**
- * Lab 12 - HashTest
- * Client/driver for HashTableSC.
+ * Lab 13 - MyHashTest
+ * Client/driver for MyHashTable.
  * @author geoffwacker
  * @id gwacker
- * 11.06.15
+ * 11.08.15
  */
 import java.util.Iterator;
 import java.util.Scanner;

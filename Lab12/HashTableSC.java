@@ -17,13 +17,13 @@ public class HashTableSC<T>
 	public HashTableSC(int size)
 	{
 		//Create an array of LinkedList<T> objects of the given size.
-		table = (LinkedList<T>[])new LinkedList[size];
+		table = (LinkedList<T>[]) new LinkedList[size];
 		
 		//Initialize all array entries as empty linked lists.
 		for(int i = 0; i < table.length; i++)
-	      {
-	         table[i] = new LinkedList<T>();
-	      }
+		{
+			table[i] = new LinkedList<T>();
+		}
 	}
 	
 	/**

@@ -1,9 +1,9 @@
 /**
- * Lab 12 - HashTableSC<T>
+ * Lab 13 - MyHashTable<T>
  * Hash table structure with separate chaining.
  * @author geoffwacker
  * @id gwacker
- * 11.06.15
+ * 11.08.15
  */
 
 import java.util.Iterator;
@@ -19,13 +19,13 @@ public class MyHashTable<T>
 	public MyHashTable(int size)
 	{
 		//Create an array of LinkedList<T> objects of the given size.
-		table = (LinkedList<T>[])new LinkedList[size];
+		table = (LinkedList<T>[]) new LinkedList[size];
 		
 		//Initialize all array entries as empty linked lists.
 		for(int i = 0; i < table.length; i++)
-	      {
-	         table[i] = new LinkedList<T>();
-	      }
+		{
+			table[i] = new LinkedList<T>();
+		}
 	}
 	
 	/**
@@ -119,6 +119,10 @@ public class MyHashTable<T>
 		}
 	}
 	
+	/**
+	 * Find the size of the table.
+	 * @return the size of our table.
+	 */
 	public int size()
 	{
 		//Variable to store size.
@@ -134,17 +138,21 @@ public class MyHashTable<T>
 		return size;
 	}
 	
+	//Nested iterator class.
 	private class Iter implements Iterator<T>
 	{
 		//Instance variables.
 		int i;
 		int j;
 		
+		//Iterator constructor.
 		public Iter()
 		{
+			//Initialize variables.
         	i = 0;
         	j = 0;
             	
+        	//Search for a non-empty list in the array, and set i to the table length.
         	while(i < table.length && table[i].size() <= 0)
         	{
         		i++;
@@ -152,35 +160,48 @@ public class MyHashTable<T>
   
 		}
 		
+		/**
+		 * Return true if there is another element.
+		 */
 		public boolean hasNext()
 		{
 			return i < table.length;
 		}
 		
+		/**
+		 * Return the next element.
+		 */
 		public T next() throws NoSuchElementException
 		{
+			//No more elements to visit, so throw a NoSuchElementException.
 			if (!hasNext()) 
 			{
 				throw new NoSuchElementException();
 			}
 			
+			//Grab the next value of this list.
 			T next = table[i].get(j);
 			
+			//Update j to the next element we'll visit in this list.
 			if (j < table[i].size() - 1) 
 			{
 				j++;
 			}
 			
+			//We don't have another element to visit in our current list.
 			else 
 			{
 				j = 0;
 				i++;
 				
+				//Go through the rest of the lists.
 				while(hasNext() && (table[i].size() == 0)) 
 				{
 					i++;
 				}
 			}
+			
+			//Return the next element.
 			return next;
 		}
 		
