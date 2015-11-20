@@ -93,6 +93,7 @@ public class HashTable
 		//Instance variable.
 		public int cursor = 0;
 		
+		//Constructor.
 		public Iter() 
 		{
 			//Initialize to zero.
@@ -105,7 +106,7 @@ public class HashTable
 			}
 		}
 
-		//Check if have another element.
+		//Check if we have another element.
 		public boolean hasNext() 
 		{
 			return cursor < table.length;
@@ -287,7 +288,7 @@ public class HashTable
 	public void printTable()
 	{
 		//Loop through the entire table.
-		for( int i = 0; i <table.length; i++)
+		for(int i = 0; i <table.length; i++)
 		{
 			//Print the line number.
 			System.out.print("[" + i + "]: ");
@@ -295,13 +296,16 @@ public class HashTable
 			//If we have a valid element, print it out with active/inactive.
 			if(table[i] != null)
 			{
+				//Print out the element.
 				System.out.print(table[i].element);
 	            
-	            if(table[i].isActive)
+				//The element is active.
+				if(table[i].isActive)
 	            {
 	            	System.out.println(", active");
 	            }
 	            
+				//The element is not active.
 	            else
 	            {
 	            	System.out.println(", inactive");

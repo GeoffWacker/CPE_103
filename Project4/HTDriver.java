@@ -22,10 +22,10 @@ public class HTDriver
 		System.out.println("Please enter the full name of the input file:");
 		String input = in.nextLine();
 
-		//Create a FileInputStream so we can read from the input file.
+		//Create a FileInputStream so we can read from the input text file.
 		FileInputStream inFile = new FileInputStream(input);
 	
-		//Create a scanner to go through the input file.
+		//Create a scanner to go through the input text file.
 		Scanner inScan = new Scanner(inFile);
 		
 		//Grab the first integer to use as the number of elements in the collection.
@@ -38,7 +38,7 @@ public class HTDriver
 		Scanner inLine;
 		
 		//Read n lines.
-		for(int i = 0; i < n; i++)
+		for(int i = 0; i <= n; i++)
 		{
 			//Get the line.
 			inLine = new Scanner(inScan.nextLine());
@@ -275,7 +275,10 @@ public class HTDriver
 				case 'K':
 				case 'k':
 				{
+					//Make the table empty empty.
 					table.makeEmpty();
+					
+					//Print out empty confirmation.
 					System.out.println("The hash table is now empty!");
 					break;
 				}
