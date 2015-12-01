@@ -20,9 +20,6 @@ public class AVLTest
 			
 		//Create a scanner to get input.
 		Scanner in = new Scanner(System.in);
-		
-		//Advance the scanner.
-		//in.nextLine();
 			
 		//Print out the menu once.
 		System.out.println("Choose one of the following operations by entering provided letter: ");

@@ -54,22 +54,22 @@ public class BasicAVL
 		//Tree is not empty, so we can do a regular insert.
 		else
 		{
-			//If tree is right heavy.
+			//If item is less than the current root, look at the left subtree.
 			if(item < treeRoot.element)
 			{
-				//
+				//Insert it in the left subtree.
 				treeRoot.left = insert(item, treeRoot.left);
 	            
-				//Balance factor...
+				//Balance factor indicates that tree is right heavy after insertion.
 				if(treeRoot.left.height - height(treeRoot.right) == 2)
 	            {
-					//Tree's right subtree is right heavy.
+					//We need to do a regular left rotation to balance.
 					if(item < treeRoot.left.element)
 					{
 						treeRoot = rotateWithLeft(treeRoot);
 					}
 					
-					//Tree's right subtree is left heavy.
+					//We need to do a double left rotation to balance.
 					else
 					{
 						treeRoot = doubleLeftRight(treeRoot);
@@ -77,22 +77,22 @@ public class BasicAVL
 	            }
 			}
 	         
-			//If tree is left heavy.
+			//If item is more than the current root, look at the right subtree.
 			else if(item > treeRoot.element)
 			{
-				//
+				//Insert it in the right subtree.
 				treeRoot.right = insert(item, treeRoot.right);
 	            
-				//Balance factor...
+				//Balance factor indicates that tree is left heavy after insertion.
 				if(treeRoot.right.height - height(treeRoot.left) == 2)
 				{
-					//Tree's left subtree is left heavy.
+					//We need to do a regular right rotation to balance.
 					if(item >= treeRoot.right.element)
 					{
 						treeRoot = rotateWithRight(treeRoot);
 					}
 					
-					//Tree's left subtree is right heavy.
+					//We need to do a double right rotation to balance.
 					else
 					{
 						treeRoot = doubleRightLeft(treeRoot);
